@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <style>
+      ul li{
+          list-style: none;
+          padding:10px 10px 20px 60px;
+          border:1px solid grey;
+          margin:10px;
+          text-align: left;
+          border-left:5px solid #C0392B;
+      }
+      ul li span{
+          position: absolute;
+          right:60px;  
+              }
+  </style>
+  <body style="padding-top:50px;">
+   <center>
+       <div class="container">
+           <div class="card" style="padding:30px;">
+                <div ng-app="MyApp" ng-controller="myCtrl">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-7">
+                                        <input type="text" ng-model="addMe" class="form-control" placeholder="enter todo"/>
+                                        <br>
+                                       
+                                </div>
+                                <div class="col-md-4">
+                                        <input type="submit" ng-click="addItem()"  class="btn btn-danger" value="Add Todo"/>
+                                </div>
+                            </div>
+                        </form>
+                        <ul>
+                            <li ng-repeat="x in products">{{x}} <span ng-click="removeItem($index)">&times;</span></li>
+                        </ul>
+                    </div>
+           </div>
+       </div>
+   </center>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+        var app = angular.module("MyApp",[]);
+        app.controller("myCtrl",function($scope){
+            $scope.products = ["milk","apple"];
+            $scope.addItem = function() {
+                $scope.products.push($scope.addMe);
+            }
+            $scope.removeItem = function(x) {
+                $scope.products.splice(x,1); 
+            }
+        })
+    </script>
+</body>
+</html>
